@@ -7,6 +7,7 @@ interface WeatherApi {
 
     companion object {
         const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
+        const val QUERY_CITY = "Moscow"
         const val CLIENT_ID = "9cc4fb816c8ec8e389ece7e71d8cef8b"
     }
 
@@ -14,6 +15,6 @@ interface WeatherApi {
     fun getWeather(
         @Query("q") q: String,
         @Query("appid") appId: String
-    )
+    ) : WeatherResponse
 
 }
