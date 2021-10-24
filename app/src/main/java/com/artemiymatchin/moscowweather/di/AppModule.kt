@@ -1,6 +1,10 @@
 package com.artemiymatchin.moscowweather.di
 
+import android.app.Application
+import android.app.SharedElementCallback
+import androidx.room.Room
 import com.artemiymatchin.moscowweather.api.WeatherApi
+import com.artemiymatchin.moscowweather.data.WeatherDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +31,18 @@ object AppModule {
     @Singleton
     fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
         retrofit.create(WeatherApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDatabase(
+        app: Application,
+        callback: WeatherDatabase.Callback
+    ) = Room.databaseBuilder(app, WeatherDatabase::class.java, "weather_database")
+        .fallbackToDestructiveMigration()
+        .addCallback(callback)
+        .build()
+
+    @Provides
+    fun provideTaskDao(db: WeatherDatabase) = db.weatherDao()
 
 }

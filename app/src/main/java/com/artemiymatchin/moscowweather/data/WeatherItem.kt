@@ -1,8 +1,10 @@
 package com.artemiymatchin.moscowweather.data
 
 import android.os.Parcelable
+import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "weather_table")
 @Parcelize
 data class WeatherItem(
     val main: Main,
