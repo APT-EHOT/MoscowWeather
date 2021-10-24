@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import javax.inject.Inject
 import javax.inject.Provider
 
-@Database(entities = [WeatherItem::class], version = 1)
+@Database(entities = [WeatherItemSimplified::class], version = 1)
 abstract class WeatherDatabase : RoomDatabase() {
 
     abstract fun weatherDao(): WeatherDao

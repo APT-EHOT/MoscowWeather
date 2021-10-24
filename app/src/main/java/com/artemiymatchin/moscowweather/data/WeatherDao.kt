@@ -10,8 +10,8 @@ import io.reactivex.Observable
 interface WeatherDao {
 
     @Query("SELECT * FROM weather_table")
-    fun loadWeatherFromDB(): Observable<List<WeatherItem>>
+    fun loadWeatherFromDB(): Observable<List<WeatherItemSimplified>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(weatherItem: WeatherItem)
+    fun insert(weatherItemSimplified: WeatherItemSimplified)
 }

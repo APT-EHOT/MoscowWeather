@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.artemiymatchin.moscowweather.R
 import com.artemiymatchin.moscowweather.api.WeatherResponse
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.schedulers.Schedulers
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main){
@@ -21,6 +22,13 @@ class MainFragment : Fragment(R.layout.fragment_main){
         super.onViewCreated(view, savedInstanceState)
 
 //        binding = MainFragmentBinding.bind(view)
+
+        viewModel.weatherData
+            .subscribeOn(Schedulers.io())
+            .doOnNext {
+                Log.d("MYLOG", it[0].toString())
+            }
+            .subscribe()
 
     }
 }
