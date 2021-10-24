@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class WeatherResponse(
-    val results: List<WeatherItem>
+    val cod: String,
+    val message: String,
+    val list: List<WeatherItem>
 ) : Parcelable
 

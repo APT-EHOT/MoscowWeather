@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class WeatherItem(
     val main: Main,
-    val weather: Weather,
+    val weather: List<Weather>,
     val wind: Wind,
     val dt_txt: String
 ) : Parcelable {
@@ -23,15 +23,8 @@ data class WeatherItem(
 
     @Parcelize
     data class Weather(
-        val weatherList: List<WeatherListItem>
-    ) : Parcelable {
-
-        @Parcelize
-        data class WeatherListItem(
-            val main: String
-        ) : Parcelable
-
-    }
+        val main: String
+    ) : Parcelable
 
     @Parcelize
     data class Wind(

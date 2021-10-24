@@ -20,12 +20,12 @@ class WeatherRepository @Inject constructor(
         weatherApi.getWeather(q = WeatherApi.QUERY_CITY, appId = WeatherApi.CLIENT_ID)
             .subscribeOn(Schedulers.io())
             .doOnNext {
-                for (weatherItem in it.results) {
+                for (weatherItem in it.list) {
                     val newWeatherItem = WeatherItemSimplified(
                         temp = weatherItem.main.temp,
                         pressure = weatherItem.main.pressure,
                         humidity = weatherItem.main.humidity,
-                        weatherMain = weatherItem.weather.weatherList[0].main,
+                        weatherMain = weatherItem.weather[0].main,
                         windSpeed = weatherItem.wind.speed,
                         dt_txt = weatherItem.dt_txt
                         )

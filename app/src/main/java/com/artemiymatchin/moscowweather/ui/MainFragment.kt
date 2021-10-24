@@ -25,9 +25,6 @@ class MainFragment : Fragment(R.layout.fragment_main){
 
         viewModel.weatherData
             .subscribeOn(Schedulers.io())
-            .doOnNext {
-                Log.d("MYLOG", it[0].toString())
-            }
             .subscribe()
 
     }
