@@ -10,14 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main){
 
-    private val viewModel by viewModels<MainViewModel>()
-
-//    private var _binding: MainFragmentBinding? = null
-//    private val binding get() = _binding!!
+    private val viewModel: MainViewModel by viewModels()
+//    private lateinit var binding: MainFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // binding =
+//        binding = MainFragmentBinding.bind(view)
     }
 }
