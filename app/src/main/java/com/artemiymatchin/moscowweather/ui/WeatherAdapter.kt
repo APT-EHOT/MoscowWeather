@@ -33,7 +33,7 @@ class WeatherAdapter :
                 pressureField.text = weatherItem.pressure.toString()
                 humidityField.text = weatherItem.humidity.toString()
                 weatherField.text = weatherItem.weatherMain
-                weatherField.text = weatherItem.windSpeed.toString()
+                windSpeedField.text = weatherItem.windSpeed.toString()
             }
         }
     }

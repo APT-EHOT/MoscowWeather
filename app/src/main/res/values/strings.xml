@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoscowWeather</string>
+    <string name="network_error_msg">Network error! Please, restart application!</string>
 </resources>
