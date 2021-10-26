@@ -15,7 +15,13 @@ class WeatherRepository @Inject constructor(
         return weatherDao.loadWeatherFromDB()
     }
 
+    private fun clearCache() {
+        weatherDao.clear()
+    }
+
     private fun tryToFetchWeather() {
+
+        val itemsToInsert = arrayListOf<WeatherItemSimplified>()
 
         weatherApi.getWeather(q = WeatherApi.QUERY_CITY, appId = WeatherApi.CLIENT_ID)
             .subscribeOn(Schedulers.io())
@@ -28,11 +34,15 @@ class WeatherRepository @Inject constructor(
                         weatherMain = weatherItem.weather[0].main,
                         windSpeed = weatherItem.wind.speed,
                         dt_txt = weatherItem.dt_txt
-                        )
-                    weatherDao.insert(newWeatherItem)
+                    )
+                    itemsToInsert.add(newWeatherItem)
                 }
             }
-            .subscribe()
+            .subscribe({
+                clearCache()
+                for (weatherItem in itemsToInsert)
+                    weatherDao.insert(weatherItem)
+            }, { e -> e.printStackTrace() })
 
     }
 }

@@ -1,9 +1,6 @@
 package com.artemiymatchin.moscowweather.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Observable
 
 @Dao
@@ -14,4 +11,7 @@ interface WeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(weatherItemSimplified: WeatherItemSimplified)
+
+    @Query("DELETE FROM weather_table")
+    fun clear()
 }

@@ -23,8 +23,6 @@ class MainFragment : Fragment(R.layout.fragment_main){
     private lateinit var binding: FragmentMainBinding
     private lateinit var dataState: WeatherDataState
 
-    private lateinit var weatherData: WeatherResponse
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
