@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.artemiymatchin.moscowweather.ui.MainFragment"
-        android:label="Main"
-        tools:layout="@layout/fragment_main">
-    </fragment>
+        android:label="MoscowWeather"
+        tools:layout="@layout/fragment_main"></fragment>
 
 </navigation>

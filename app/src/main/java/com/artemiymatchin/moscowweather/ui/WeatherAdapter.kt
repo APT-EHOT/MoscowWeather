@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.artemiymatchin.moscowweather.data.WeatherItemSimplified
+import com.artemiymatchin.moscowweather.data.*
 import com.artemiymatchin.moscowweather.databinding.WeatherItemBinding
 
 class WeatherAdapter :
@@ -28,12 +28,12 @@ class WeatherAdapter :
 
         fun bind(weatherItem: WeatherItemSimplified) {
             binding.apply {
-                dtField.text = weatherItem.dt_txt
-                tempField.text = weatherItem.temp.toString()
-                pressureField.text = weatherItem.pressure.toString()
-                humidityField.text = weatherItem.humidity.toString()
-                weatherField.text = weatherItem.weatherMain
-                windSpeedField.text = weatherItem.windSpeed.toString()
+                dtField.text = formatDate(weatherItem.dt_txt)
+                tempField.text = formatTemp(weatherItem.temp)
+                pressureField.text = formatPressure(weatherItem.pressure)
+                humidityField.text = formatHumidity(weatherItem.humidity)
+                weatherField.text = formatWeather(weatherItem.weatherMain)
+                windSpeedField.text = formatWindSpeed(weatherItem.windSpeed)
             }
         }
     }
