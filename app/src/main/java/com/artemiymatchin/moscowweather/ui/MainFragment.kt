@@ -42,6 +42,8 @@ class MainFragment : Fragment(R.layout.fragment_main){
 
         updateUI()
 
+
+        // Multithreading realization using rxJava
         viewModel.weatherData
             .subscribeOn(Schedulers.io())
             .doOnNext {

@@ -23,6 +23,7 @@ class WeatherRepository @Inject constructor(
 
         val itemsToInsert = arrayListOf<WeatherItemSimplified>()
 
+        // Multithreading realization using rxJava
         weatherApi.getWeather(q = WeatherApi.QUERY_CITY, appId = WeatherApi.CLIENT_ID)
             .subscribeOn(Schedulers.io())
             .doOnNext {
@@ -41,7 +42,7 @@ class WeatherRepository @Inject constructor(
             .subscribe({
                 clearCache()
                 for (weatherItem in itemsToInsert)
-                    weatherDao.insert(weatherItem)
+                    weatherDao.insert(weatherItem) // Access to DB using Room
             }, { e -> e.printStackTrace() })
 
     }
